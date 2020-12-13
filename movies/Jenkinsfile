@@ -85,10 +85,7 @@ pipeline {
                 sh '''
                         oc new-app --name=${APP_NAME} -n ${DEV_PROJECT} \
                             --as-deployment-config -i=${APP_NAME}:latest
-                   '''
-
-                sh '''
-                        oc expose svc/${APP_NAME}
+                        oc expose svc/${APP_NAME} -n ${DEV_PROJECT}
                    '''
             }
         }
